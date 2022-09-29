@@ -1,0 +1,19 @@
+{
+  "name": "geniusapp",
+  "version": "1.0.0",
+  "description": "React project to interact with the Genius API from RapidAPI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/danielcaste1/geniusAPP.git"
+  },
+  "author": "danielcastellanos-dev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/danielcaste1/geniusAPP/issues"
+  },
+  "homepage": "https://github.com/danielcaste1/geniusAPP#readme"
+}
