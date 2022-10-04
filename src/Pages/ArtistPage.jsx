@@ -30,7 +30,6 @@ const ArtistPage = () => {
   const loadData = async (id, songsPage) => {
     onLoading();
     const artistAPI = await getArtist(id);
-    console.log(artistAPI);
     const songsAPI = await getTopSongs(id, songsPage);
     const name = artistAPI.response.artist.name;
     const picture = artistAPI.response.artist.image_url;
@@ -69,6 +68,7 @@ const ArtistPage = () => {
               songs.map((song) => (
                 <SongCard
                   key={song.id}
+                  songID={song.id}
                   title={song.title}
                   artist={song.primary_artist.name}
                   picture={song.song_art_image_thumbnail_url}
