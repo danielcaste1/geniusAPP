@@ -1,9 +1,11 @@
 const reducerObject = (state, payload) => ({
-  [actionTypes.LOAD_TOP_SONGS]: {
+  [actionTypes.LOAD_DATA]: {
     ...state,
-    topSongs: payload.songs,
+    name: payload.name,
+    picture: payload.picture,
+    songs: payload.songs,
     nextPage: payload.nextPage,
-    prevPage: payload.nextPage ? payload.nextPage - 2 : ((state.prevPage + 1) === 1 ? undefined : state.prevPage + 1 ),
+    prevPage: payload.nextPage ? payload.nextPage - 2 : (!(state.nextPage === 2) && ((state.prevPage + 1) === 1) ? undefined : state.prevPage + 1 ),
     loading: false,
   },
   [actionTypes.LOADING]: {
@@ -13,7 +15,7 @@ const reducerObject = (state, payload) => ({
 });
 
 const actionTypes = {
-  LOAD_TOP_SONGS: "LOAD_TOP_SONGS",
+  LOAD_DATA: "LOAD_DATA",
   LOADING: "LOADING",
 };
 

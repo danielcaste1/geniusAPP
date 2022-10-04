@@ -30,6 +30,11 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
+    publicPath: "/",
+  },
+  mode: "development",
+  resolve: {
+    extensions: [".js", ".jsx"],
   },
 
   module: {
@@ -50,5 +55,6 @@ module.exports = {
     },
     compress: true,
     port: 3000,
+    historyApiFallback: true,
   },
 };

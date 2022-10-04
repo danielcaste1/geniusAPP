@@ -11,11 +11,12 @@ const SearchResults = ({ resultSongs, loading, queryMade }) => {
       ) : resultSongs.length && !loading ? (
         resultSongs.map((song) => (
           <SongResult
+            key={song.result.id}
             image={song.result.header_image_thumbnail_url}
+            songID={song.result.id}
             title={song.result.title}
+            artistID={song.result.primary_artist.id}
             artist={song.result.primary_artist.name}
-            urlSong={song.result.url} 
-            urlArtist={song.result.primary_artist.url} 
           />
         ))
       ) : queryMade && !loading ? (

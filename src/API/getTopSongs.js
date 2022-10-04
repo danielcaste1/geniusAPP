@@ -6,9 +6,9 @@ const options = {
   },
 };
 
-export const getTopSongs = async (page) => {
+export const getTopSongs = async (artistID, page) => {
   const call = await fetch(
-    `https://genius.p.rapidapi.com/artists/1050455/songs?sort=popularity&page=${page}&per_page=6`,
+    `https://genius.p.rapidapi.com/artists/${artistID}/songs?sort=popularity&page=${page}&per_page=6`,
     options
   );
   const data = await call.json();
@@ -16,10 +16,20 @@ export const getTopSongs = async (page) => {
   return data;
 };
 
-
+export const getSong = async(songID) =>{
+  const call = await fetch(`https://genius.p.rapidapi.com/songs/${songID}`, options);
+  const data = await call.json();
+  return data;
+}
 
 export const getQuerySongs = async (queryString)=>{
   const call = await fetch(`https://genius.p.rapidapi.com/search?q=${queryString}`, options);
+  const data = await call.json();
+  return data;
+}
+
+export const getArtist = async(artistID) =>{
+  const call = await fetch(`https://genius.p.rapidapi.com/artists/${artistID}`, options);
   const data = await call.json();
   return data;
 }

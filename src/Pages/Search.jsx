@@ -43,7 +43,7 @@ const Search = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full py-10">
+    <div className="flex flex-col items-center w-full py-10 bg-gradient-to-t from-slate-900 to-slate-800">
       <Title title={"Search..."} />
       <SearchInput
         onSearch={onSearch}
