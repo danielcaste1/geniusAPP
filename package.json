@@ -4,7 +4,7 @@
   "description": "React project to interact with the Genius API from RapidAPI",
   "main": "./src/index.js",
   "scripts": {
-    "build": "npx webpack build --mode production --watch",
+    "build": "npx webpack build --mode production",
     "dev": "npx webpack build --mode development --watch",
     "start": "npx webpack serve --mode development"
   },
