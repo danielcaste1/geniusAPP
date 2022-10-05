@@ -1,19 +1,11 @@
 const actionTypes = {
-  LOAD_DATA: "LOAD_DATA",
-};
+  ON_SET_ITEM: "ON_SET_ITEM"
+}
 const reducerObject = (state, payload) => ({
-
-  [actionTypes.LOAD_DATA]: {
+  [actionTypes.ON_SET_ITEM] : {
     ...state,
-    id: payload.id,
-    name: payload.name,
-    picture: payload.picture,
-    album: payload.album,
-    artist: payload.artist,
-    artistID: payload.artistID,
-    geniusURL: payload.geniusURL,
-    appleURL: payload.appleURL,
-  },
+    item: payload.item
+  }
 });
 
 const reducer = (state, action) => {

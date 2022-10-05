@@ -1,13 +1,15 @@
 import React from "react";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { FavoritesProvider } from "./Contexts/FavoritesContext.jsx";
 import Root from "./Routes/Root.jsx";
 import ErrorPage from "./Routes/Error.jsx";
 import Home from "./Pages/Home.jsx";
 import Search from "./Pages/Search.jsx";
 import SongPage from "./Pages/SongPage.jsx";
 import ArtistPage from "./Pages/ArtistPage.jsx";
-
+import Favorites from "./Pages/Favorites.jsx";
 function App() {
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -42,14 +44,18 @@ function App() {
             },
           ]
         },
+        {
+          path: "favorites",
+          element: <Favorites/>
+        },
       ],
     },
   ]);
 
   return (
-    <React.StrictMode>
+    <FavoritesProvider>
       <RouterProvider router={router} />
-    </React.StrictMode>
+    </FavoritesProvider>
   );
 }
 
