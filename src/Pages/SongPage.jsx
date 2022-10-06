@@ -22,7 +22,7 @@ const SongPage = () => {
     appleURL: undefined,
   };
 
-  const { isFavorite } = useContext(FavoritesContext);
+  const { isFavorite, addSong, removeSong } = useContext(FavoritesContext);
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -104,7 +104,7 @@ const SongPage = () => {
               {artist}
             </Link>
           </div>
-          {id ? <LikeButton song={song} isFavorite={isFavorite(song)} /> : null}
+          {id ? <LikeButton addItem={addSong} removeItem={removeSong} favorite={song} isFavorite={isFavorite("song",song)} /> : null}
         </div>
         <div>
           <PlayerButton Icon={SiGenius} url={geniusURL} text="View Lyrics" />

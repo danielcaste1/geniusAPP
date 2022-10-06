@@ -1,12 +1,11 @@
-import React, { useContext } from 'react';
-import { FavoritesContext } from '../../Contexts/FavoritesContext';
+import React from 'react';
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 
-const LikeButton = ({isFavorite, song}) => {
-  const { addSong, removeSong } = useContext(FavoritesContext);
+const LikeButton = ({isFavorite, favorite, addItem, removeItem}) => {
+
   return (
     <button className='mx-3 text-3xl text-slate-50'
-    onClick={ !isFavorite ?  () => addSong(song) : ()=> removeSong(song)}
+    onClick={ !isFavorite ?  () => addItem(favorite) : ()=> removeItem(favorite)}
     >
       {
         isFavorite ? (

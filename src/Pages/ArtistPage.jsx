@@ -1,15 +1,18 @@
-import React, { Fragment, useEffect, useReducer } from "react";
-import {useParams } from "react-router-dom";
+import React, { Fragment, useEffect, useReducer, useContext } from "react";
+import { useParams } from "react-router-dom";
 import { getArtist, getTopSongs } from "../API/getTopSongs";
+import LikeButton from "../Components/Buttons/LikeButton";
 import PageButton from "../Components/Buttons/PageButton.jsx";
 import SongCard from "../Components/SongCard.jsx";
-import { actionTypes, reducer } from "../Reducer/ReducerTopSongs";
+import { FavoritesContext } from "../Contexts/FavoritesContext";
+import { actionTypes, reducer } from "../Reducer/ReducerArtist";
+
 
 const ArtistPage = () => {
-
-  const {artistID} = useParams();
+  const { artistID } = useParams();
 
   const initialState = {
+    id: undefined,
     name: undefined,
     picture: undefined,
     songs: undefined,
@@ -18,8 +21,22 @@ const ArtistPage = () => {
     loading: true,
   };
 
+
+  const { isFavorite, addArtist, removeArtist } = useContext(FavoritesContext);
+
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { name, picture, loading, songs, prevPage, nextPage } = state;
+  
+  const { 
+    id, 
+    name, 
+    picture, 
+    loading, 
+    songs, 
+    prevPage, 
+    nextPage 
+  } = state;
+
+  const artist = { ...state  };
 
   const onLoading = () => {
     dispatch({
@@ -39,6 +56,7 @@ const ArtistPage = () => {
     dispatch({
       type: actionTypes.LOAD_DATA,
       payload: {
+        id : artistAPI.response.artist.id,
         name,
         picture,
         songs,
@@ -49,17 +67,29 @@ const ArtistPage = () => {
   };
   useEffect(() => {
     loadData(artistID, nextPage);
-  },[]);
+  }, []);
 
   return (
     <div className="w-full flex flex-col items-center justify-center">
       <div className="w-full flex items-center justify-center">
-        <div className={`${!picture ? "animate-pulse" : "" } bg-slate-900 h-8 w-8 mr-5 rounded-full overflow-hidden`}>
+        <div
+          className={`${
+            !picture ? "animate-pulse" : ""
+          } bg-slate-900 h-8 w-8 mr-5 rounded-full overflow-hidden`}
+        >
           <img src={picture} alt="" />
         </div>
         <span className="text-3xl font-semibold text-slate-200 ">
-          {name ? `${name} popular songs` : ""} 
+          {name ? `${name} popular songs` : ""}
         </span>
+        {id ? (
+          <LikeButton
+            favorite={state}
+            isFavorite={isFavorite("artist", artist)}
+            addItem={addArtist}
+            removeItem={removeArtist}
+          />
+        ) : null}
       </div>
       <div className="w-full">
         <div className="flex flex-col justify-center items-center min-h-full py-2 rounded-xl">
@@ -88,12 +118,12 @@ const ArtistPage = () => {
           <div>
             <PageButton
               isDisabled={!prevPage}
-              onClick={() => loadData(artistID,prevPage)}
+              onClick={() => loadData(artistID, prevPage)}
               icon="Prev"
             />
             <PageButton
               isDisabled={!nextPage}
-              onClick={() => loadData(artistID,nextPage)}
+              onClick={() => loadData(artistID, nextPage)}
               icon="Next"
             />
           </div>

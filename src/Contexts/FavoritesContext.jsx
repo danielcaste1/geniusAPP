@@ -4,10 +4,10 @@ import useFavorites from "../Hooks/useFavorites";
 const FavoritesContext = createContext();
 
 const FavoritesProvider = (props) => {
-  const { favorites, addSong, removeSong, isFavorite } = useFavorites();
+  const { favorites, addSong, removeSong, addArtist, removeArtist, isFavorite } = useFavorites();
   return (
     <FavoritesContext.Provider
-      value={{ favorites, addSong, removeSong, isFavorite }}
+      value={{ favorites, addSong, removeSong,addArtist, removeArtist, isFavorite }}
     >{props.children}</FavoritesContext.Provider>
   );
 };

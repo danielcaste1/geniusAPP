@@ -1,6 +1,7 @@
 const reducerObject = (state, payload) => ({
   [actionTypes.LOAD_DATA]: {
     ...state,
+    id: payload.id,
     name: payload.name,
     picture: payload.picture,
     songs: payload.songs,

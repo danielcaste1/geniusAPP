@@ -31,7 +31,7 @@ const Header = () => {
                 to="/"
                 className="flex items-center justify-center  text-xl  py-4 text-center font-semibold text-slate-200 hover:bg-slate-50/10 w-full "
               >
-                <AiFillHome className="mx-3" />
+                <AiFillHome className="text-3xl mx-3" />
                 Home
               </Link>
             </li>
@@ -40,7 +40,7 @@ const Header = () => {
                 to="/search"
                 className="flex items-center justify-center text-xl  py-4 text-center font-semibold text-slate-200 hover:bg-slate-50/10 w-full "
               >
-                <AiOutlineSearch className="mx-3" />
+                <AiOutlineSearch className="text-3xl mx-3" />
                 Search
               </Link>
             </li>
@@ -49,8 +49,8 @@ const Header = () => {
                 to="/favorites"
                 className="flex items-center justify-center text-xl  py-4 text-center font-semibold text-slate-200 hover:bg-slate-50/10 w-full "
               >
-                <AiOutlineStar className="mx-3" />
-                favorites
+                <AiOutlineStar className="text-3xl mx-3" />
+                Favorites
               </Link>
             </li>
           </ul>
