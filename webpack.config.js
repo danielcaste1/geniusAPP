@@ -44,6 +44,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "Genius App",
       template: "./public/index.html",
+      favicon: "./src/assets/genius_icon.png"
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
