@@ -4,11 +4,16 @@ const SearchInput = ({queryValue, onTyping, onSearch}) => {
   return (
     <div className="flex items-center justify-between bg-slate-600  rounded-xl overflow-hidden w-fit">
       <input
-        placeholder="Your song..."
+        placeholder="That song that goes..."
         className="outline-none px-3 py-2 text-md text-slate-600"
         type="text"
         value={queryValue}
         onChange={event => onTyping(event.target.value)}
+        onKeyDown={event => {
+          if(event.key === "Enter"){
+            onSearch();
+          }
+        }}
       />
       <button onClick={onSearch} className="bg-slate-600 text-slate-100 h-full" type="button">
         <AiOutlineSearch className=" mx-3" />

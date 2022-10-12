@@ -43,7 +43,7 @@ const Search = () => {
   };
 
   return (
-    <div className="flex flex-col items-center w-full py-10 bg-gradient-to-t from-slate-900 to-slate-800">
+    <div className="flex flex-col items-center w-full rounded-2xl py-10 m-10 shadow-lg shadow-slate-900/50 bg-slate-900/50">
       <Title title={"Search..."} />
       <SearchInput
         onSearch={onSearch}

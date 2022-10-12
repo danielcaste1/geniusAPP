@@ -45,8 +45,8 @@ const SongPage = () => {
       payload: {
         id: song.id,
         name: song.title,
-        picture: song.song_art_image_url,
-        album: song.album?.name ? song.album.name : "...",
+        picture: song.album ? song.album.cover_art_url  : song.song_art_image_url,
+        album: song.album ? song.album.name : "...",
         artistID: song.primary_artist.id,
         artist: song.primary_artist.name,
         geniusURL: song.url,
